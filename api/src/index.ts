@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { urlencoded } from 'express'
 import dotenv from 'dotenv'
 dotenv.config()
 import pg from 'pg'
@@ -25,6 +25,7 @@ import productRoutes from './routes/products/index'
 
 const app = express()
 app.use(express.json())
+app.use(urlencoded({ extended: false }))
 
 app.get('/', (req, res) => {
   res.send('Hello, world!')
