@@ -22,6 +22,20 @@
       "when": 1738667031987,
       "tag": "0002_military_nick_fury",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1738752623411,
+      "tag": "0003_tan_fantastic_four",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1738757047674,
+      "tag": "0004_green_cargill",
+      "breakpoints": true
     }
   ]
 }
