@@ -6,6 +6,7 @@ dotenv.config()
 // routes
 import productRoutes from './routes/products/index.js'
 import authRoutes from './routes/auth/index.js'
+import orderRoutes from './routes/orders/index.js'
 
 const app = express()
 app.use(express.json())
@@ -18,6 +19,7 @@ app.get('/', (req, res) => {
 // routers
 app.use('/products', productRoutes)
 app.use('/auth', authRoutes)
+app.use('/orders', orderRoutes)
 
 if (process.env.NODE_ENV === 'dev') {
   app.listen(3000, () => {

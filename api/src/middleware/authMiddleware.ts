@@ -1,18 +1,29 @@
-// verify token middleware
 import { Request, Response, NextFunction } from 'express'
-import { verify } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 
 export function verifyToken(req: Request, res: Response, next: NextFunction) {
+  const token = req.header('Authorization')
+
+  if (!token) {
+    res.status(401).json({ error: 'Access denied' })
+    return
+  }
+
   try {
-    const token = req.headers.authorization?.split(' ')[1]
-    if (!token) {
-      return res.status(401).json({ error: 'Unauthorized' })
+    // decode jwt toke data
+    const decoded = jwt.verify(token, 'secret')
+    if (typeof decoded !== 'object' || !decoded?.userId) {
+      res.status(401).json({ error: 'Access denied' })
+      return
     }
-    const decoded = verify(token, 'secret')
-    console.log(decoded)
+
+    // @ts-ignore
+    req.userId = decoded.userId
+    // @ts-ignore
+    req.role = decoded.role
 
     next()
-  } catch (error) {
-    return res.status(401).json({ error: 'Unauthorized' })
+  } catch (e) {
+    res.status(401).json({ error: 'Access denied' })
   }
 }
