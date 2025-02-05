@@ -13,12 +13,10 @@ export const usersTable = pgTable('users', {
 
 // zod schema
 export const createUserSchema = createInsertSchema(usersTable).omit({
-  id: true,
   role: true,
   address: true,
 })
 export const updateUserSchema = createInsertSchema(usersTable).omit({
-  id: true,
   role: true,
   address: true,
 })

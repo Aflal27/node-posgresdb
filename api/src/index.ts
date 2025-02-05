@@ -3,8 +3,8 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 // routes
-import productRoutes from './routes/products/index'
-import authRoutes from './routes/auth/index'
+import productRoutes from './routes/products/index.js'
+import authRoutes from './routes/auth/index.js'
 
 const app = express()
 app.use(express.json())

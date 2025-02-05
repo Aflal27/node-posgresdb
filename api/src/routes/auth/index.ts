@@ -1,7 +1,7 @@
 import express from 'express'
-import { loginUser, registerUser } from './authController'
-import { validateData } from '../../middleware/validationMiddleware'
-import { createUserSchema, loginUserSchema } from '../../db/userSchema'
+import { loginUser, registerUser } from './authController.js'
+import { validateData } from '../../middleware/validationMiddleware.js'
+import { createUserSchema, loginUserSchema } from '../../db/userSchema.js'
 
 const router = express.Router()
 

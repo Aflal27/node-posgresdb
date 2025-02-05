@@ -5,12 +5,12 @@ import {
   getProduct,
   listProducts,
   updateProduct,
-} from './productController'
-import { validateData } from '../../middleware/validationMiddleware'
+} from './productController.js'
+import { validateData } from '../../middleware/validationMiddleware.js'
 import {
   createProductSchema,
   updateProductSchema,
-} from '../../db/productSchema'
+} from '../../db/productSchema.js'
 
 const router = express.Router()
 
