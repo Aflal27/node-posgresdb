@@ -1,4 +1,5 @@
 import express, { urlencoded } from 'express'
+import serverless from 'serverless-http'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -18,6 +19,10 @@ app.get('/', (req, res) => {
 app.use('/products', productRoutes)
 app.use('/auth', authRoutes)
 
-app.listen(3000, () => {
-  console.log('Server started on port 3000')
-})
+if (process.env.NODE_ENV === 'dev') {
+  app.listen(3000, () => {
+    console.log('Server started on port 3000')
+  })
+}
+
+export const handler = serverless(app)
