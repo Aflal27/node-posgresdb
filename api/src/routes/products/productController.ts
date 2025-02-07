@@ -24,21 +24,21 @@ export const createProduct = async (req: Request, res: Response) => {
   }
 }
 
-export const getProduct = async (req: Request, res: Response) => {
+export async function getProductById(req: Request, res: Response) {
   try {
+    const { id } = req.params
     const [product] = await db
       .select()
       .from(productsTable)
-      .where(eq(productsTable.id, Number(req.params.id)))
+      .where(eq(productsTable.id, Number(id)))
 
     if (!product) {
-      res.status(404).json({ error: 'Product not found' })
+      res.status(404).send({ message: 'Product not found' })
     } else {
-      res.status(200).json(product)
+      res.json(product)
     }
-    res.status(200).json(product)
-  } catch (error) {
-    res.status(500).json(error)
+  } catch (e) {
+    res.status(500).send(e)
   }
 }
 

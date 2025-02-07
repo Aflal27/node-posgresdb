@@ -12,9 +12,9 @@ export const productsTable = pgTable('products', {
   name: varchar({ length: 255 }).notNull(),
   description: text().notNull(),
   price: doublePrecision().notNull(),
+  image: varchar({ length: 255 }).notNull(),
 })
 
 // zod schema
 export const createProductSchema = createInsertSchema(productsTable)
 export const updateProductSchema = createInsertSchema(productsTable).partial()
- 

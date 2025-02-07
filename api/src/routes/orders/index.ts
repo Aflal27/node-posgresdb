@@ -1,6 +1,11 @@
 // create routes
 import express from 'express'
-import { createOrder, getOrder, listOrders, updateOrder } from './orderController.js'
+import {
+  createOrder,
+  getOrder,
+  listOrders,
+  updateOrder,
+} from './orderController.js'
 import { validateData } from '../../middleware/validationMiddleware.js'
 import {
   insertOrderSchema,

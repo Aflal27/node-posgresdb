@@ -3,7 +3,7 @@ import { createInsertSchema } from 'drizzle-zod'
 import { doublePrecision, integer, pgTable, varchar } from 'drizzle-orm/pg-core'
 import { usersTable } from './userSchema.js'
 import { productsTable } from './productSchema.js'
-import { z } from 'zod/index.js'
+import { z } from 'zod'
 
 export const ordersTable = pgTable('orders', {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),

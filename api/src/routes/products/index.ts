@@ -2,7 +2,7 @@ import express from 'express'
 import {
   createProduct,
   deleteProduct,
-  getProduct,
+  getProductById,
   listProducts,
   updateProduct,
 } from './productController.js'
@@ -16,7 +16,7 @@ const router = express.Router()
 
 router.get('/', listProducts)
 router.post('/', validateData(createProductSchema), createProduct)
-router.get('/:id', getProduct)
+router.get('/:id', getProductById)
 router.delete('/:id', deleteProduct)
 router.put('/:id', validateData(updateProductSchema), updateProduct)
 
