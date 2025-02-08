@@ -11,12 +11,18 @@ import {
   insertOrderSchema,
   insertOrderItemSchema,
   updateOrderSchema,
+  insertOrderWithItemsSchema,
 } from '../../db/orderSchema.js'
 import { verifyToken } from '../../middleware/authMiddleware.js'
 
 const router = express.Router()
 
-router.post('/', verifyToken, validateData(insertOrderItemSchema), createOrder)
+router.post(
+  '/',
+  verifyToken,
+  validateData(insertOrderWithItemsSchema),
+  createOrder
+)
 router.get('/', verifyToken, listOrders)
 router.get('/:id', verifyToken, getOrder)
 router.put('/:id', verifyToken, validateData(updateOrderSchema), updateOrder)

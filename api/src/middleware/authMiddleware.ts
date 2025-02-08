@@ -12,13 +12,15 @@ export function verifyToken(req: Request, res: Response, next: NextFunction) {
   try {
     // decode jwt toke data
     const decoded = jwt.verify(token, 'secret')
-    if (typeof decoded !== 'object' || !decoded?.userId) {
+
+    if (typeof decoded !== 'object' || !decoded?.id) {
       res.status(401).json({ error: 'Access denied' })
       return
     }
 
     // @ts-ignore
-    req.userId = decoded.userId
+    req.userId = decoded.id
+
     // @ts-ignore
     req.role = decoded.role
 

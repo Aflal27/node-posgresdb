@@ -1,14 +1,20 @@
 // orders schema
 import { createInsertSchema } from 'drizzle-zod'
-import { doublePrecision, integer, pgTable, varchar } from 'drizzle-orm/pg-core'
-import { usersTable } from './userSchema.js'
-import { productsTable } from './productSchema.js'
+import {
+  doublePrecision,
+  integer,
+  pgTable,
+  varchar,
+  timestamp,
+} from 'drizzle-orm/pg-core'
+import { usersTable } from './userSchema'
+import { productsTable } from './productSchema'
 import { z } from 'zod'
 
 export const ordersTable = pgTable('orders', {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  createdAt: varchar({ length: 255 }).notNull(),
-  status: varchar({ length: 255 }).notNull(),
+  createdAt: timestamp().notNull().defaultNow(),
+  status: varchar({ length: 50 }).notNull().default('New'),
   userId: integer()
     .references(() => usersTable.id)
     .notNull(),
@@ -22,7 +28,7 @@ export const orderItemsTable = pgTable('order_items', {
   orderId: integer()
     .references(() => ordersTable.id)
     .notNull(),
-  quantity: integer().notNull(),
+  quentity: integer().notNull(),
   price: doublePrecision().notNull(),
 })
 
