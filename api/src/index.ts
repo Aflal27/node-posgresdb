@@ -22,8 +22,8 @@ app.use('/auth', authRoutes)
 app.use('/orders', orderRoutes)
 
 if (process.env.NODE_ENV === 'dev') {
-  app.listen(3000, () => {
-    console.log('Server started on port 3000')
+  app.listen(3001, () => {
+    console.log('Server started on port 3001')
   })
 }
 
